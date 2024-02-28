@@ -76,7 +76,9 @@ const listMarkup = images
     )
     .join("");
 
-    list.insertAdjacentHTML("beforeend", listMarkup);
+list.insertAdjacentHTML("beforeend", listMarkup);
+    
+
 /* <li class="gallery-item">
   <a class="gallery-link" href="large-image.jpg">
     <img
