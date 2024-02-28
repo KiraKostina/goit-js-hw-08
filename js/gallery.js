@@ -64,8 +64,28 @@ const images = [
   },
 ];
 
+const list = document.querySelector(".gallery");
 
+const listMarkup = images
+    .map(image =>
+            `<li class="gallery-item">
+            <a class="gallery-link" href="${image.original}">
+                <img class = "gallery-image" src="${image.preview}" data-source="${image.original}" alt="${image.description}"/>
+            </a>
+            </li>`
+    )
+    .join("");
 
-
+    list.insertAdjacentHTML("beforeend", listMarkup);
+/* <li class="gallery-item">
+  <a class="gallery-link" href="large-image.jpg">
+    <img
+      class="gallery-image"
+      src="small-image.jpg"
+      data-source="large-image.jpg"
+      alt="Image description"
+    />
+  </a>
+</li> */
 
 
