@@ -64,9 +64,9 @@ const images = [
   },
 ];
 
-const list = document.querySelector(".gallery");
+const gallery = document.querySelector(".gallery");
 
-const listMarkup = images
+const galleryMarkup = images
     .map(image =>
             `<li class="gallery-item">
             <a class="gallery-link" href="${image.original}">
@@ -76,9 +76,20 @@ const listMarkup = images
     )
     .join("");
 
-list.insertAdjacentHTML("beforeend", listMarkup);
+gallery.insertAdjacentHTML("beforeend", galleryMarkup);
     
+gallery.addEventListener("click", handleModalOpen);
 
+function handleModalOpen(event) {
+ 
+  if (event.target.nodeName === "IMG") {
+    event.preventDefault()
+    const instance = basicLightbox.create(`
+    <img src="${event.target.dataset.source}" alt="${event.target.alt}" /> 
+`);
+    instance.show();
+  }
+}
 /* <li class="gallery-item">
   <a class="gallery-link" href="large-image.jpg">
     <img
