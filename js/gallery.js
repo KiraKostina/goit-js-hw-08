@@ -90,6 +90,24 @@ function handleModalOpen(event) {
     instance.show();
   }
 }
+
+const instance = basicLightbox.create(`
+    <img src="${event.target.dataset.source}" width="800" height="600">`,
+    {
+        onShow: (instance) => {
+            document.addEventListener('keydown', onEscKeyPress);
+        },
+        onClose: (instance) => {
+            document.removeEventListener('keydown', onEscKeyPress);
+        }
+    }
+);
+
+function onEscKeyPress(e) {
+    if (e.key === 'Escape') {
+        instance.close();
+    }
+}
 /* <li class="gallery-item">
   <a class="gallery-link" href="large-image.jpg">
     <img
